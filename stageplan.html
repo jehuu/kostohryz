@@ -229,8 +229,8 @@
       <h1><span class="drums" data-i18n="titleBand">KOSTOHRYZ</span> <span class="guitar" data-i18n="titlePlan">STAGEPLAN</span></h1>
       <div class="controls">
         <nav class="page-links" aria-label="Page switcher">
-          <a class="active" href="stageplan.html" data-i18n="linkStageplan">STAGEPLAN</a>
-          <a href="rider.html" data-i18n="linkRider">RIDER</a>
+          <a class="active" href="stageplan.html" data-page="stageplan.html" data-i18n="linkStageplan">STAGEPLAN</a>
+          <a href="rider.html" data-page="rider.html" data-i18n="linkRider">RIDER</a>
         </nav>
         <div class="lang-switch" role="group" aria-label="Language switcher">
           <button class="lang-btn active" data-lang="en">EN</button>
@@ -375,6 +375,38 @@
 
     document.querySelectorAll(".lang-btn").forEach((btn) => {
       btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
+    });
+
+    function resolvePageUrl(fileName) {
+      const host = window.location.hostname;
+      const path = window.location.pathname;
+
+      if (host === "github.com") {
+        const blobMatch = path.match(/^\/([^/]+)\/([^/]+)\/blob\/([^/]+)\/(.*)$/);
+        if (blobMatch) {
+          const owner = blobMatch[1];
+          const repo = blobMatch[2];
+          const branch = blobMatch[3];
+          const currentFilePath = blobMatch[4];
+          const slashIndex = currentFilePath.lastIndexOf("/");
+          const dirPath = slashIndex >= 0 ? currentFilePath.slice(0, slashIndex + 1) : "";
+          return `https://github.com/${owner}/${repo}/blob/${branch}/${dirPath}${fileName}`;
+        }
+      }
+
+      if (host.endsWith("github.io")) {
+        const slashIndex = path.lastIndexOf("/");
+        const basePath = slashIndex >= 0 ? path.slice(0, slashIndex + 1) : "/";
+        return `${window.location.origin}${basePath}${fileName}`;
+      }
+
+      return fileName;
+    }
+
+    document.querySelectorAll(".page-links a[data-page]").forEach((link) => {
+      const fileName = link.getAttribute("data-page");
+      if (!fileName) return;
+      link.setAttribute("href", resolvePageUrl(fileName));
     });
 
     setLanguage("en");
