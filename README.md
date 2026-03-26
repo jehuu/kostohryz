@@ -1,4 +1,7 @@
-# ![KOSTOHRYZ](assets/logos/img.jpeg)
+# <p align="center">
+
+  <img src="assets/logos/img.jpeg" alt="KOSTOHRYZ" width="300" />
+</p>
 
 KOSTOHRYZ is an experimental grindcore band from Czech Republic
 
