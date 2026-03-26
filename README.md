@@ -2,6 +2,8 @@
 
 KOSTOHRYZ is an experimental grindcore band from Czech Republic
 
+![KOSTOHRYZ](assets/logos/img.jpeg)
+
 ## Project Files
 
 - `stageplan.html` - stage plot and instrument notes
