@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kostohryz Stageplan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #020703;
+      --ink: #b7ffbf;
+      --drums: #ff355e;
+      --keys: #ff4fd8;
+      --guitar: #49a6ff;
+      --vocal: #ffe14f;
+      --mixers: #ffd447;
+      --panel: #03110a;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(26, 84, 41, 0.45) 0, rgba(3, 17, 10, 0.9) 45%, #020703 100%),
+        repeating-linear-gradient(0deg, rgba(120, 255, 120, 0.03) 0px, rgba(120, 255, 120, 0.03) 1px, rgba(0, 0, 0, 0) 2px, rgba(0, 0, 0, 0) 4px);
+      color: var(--ink);
+      font-family: "IBM Plex Mono", "Menlo", "Consolas", monospace;
+    }
+
+    .wrap {
+      max-width: 1520px;
+      margin: 0 auto;
+      background: var(--panel);
+      border: 2px solid rgba(92, 255, 129, 0.45);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 0 1px rgba(102, 255, 143, 0.25) inset, 0 0 24px rgba(52, 255, 110, 0.18);
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "VT323", "IBM Plex Mono", monospace;
+      font-size: 42px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+    }
+
+    h1 .drums { color: var(--drums); text-shadow: 0 0 7px rgba(255, 53, 94, 0.55); }
+    h1 .guitar { color: var(--guitar); text-shadow: 0 0 7px rgba(73, 166, 255, 0.55); }
+
+    .lang-switch {
+      display: inline-flex;
+      border: 1px solid rgba(110, 255, 145, 0.45);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .lang-btn {
+      border: 0;
+      background: rgba(3, 18, 10, 0.85);
+      color: var(--ink);
+      padding: 8px 12px;
+      font-family: "Silkscreen", "IBM Plex Mono", monospace;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .lang-btn.active {
+      background: rgba(73, 166, 255, 0.22);
+      color: #d4ebff;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(920px, 1fr) minmax(280px, 360px);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .stage-col {
+      min-width: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    pre {
+      margin: 0;
+      width: fit-content;
+      max-width: 100%;
+      line-height: 1.35;
+      font-size: clamp(12px, 0.82vw, 15px);
+      font-family: "IBM Plex Mono", "Menlo", "Consolas", monospace;
+      overflow: auto;
+      background:
+        linear-gradient(rgba(60, 255, 106, 0.04), rgba(60, 255, 106, 0.04)),
+        repeating-linear-gradient(0deg, rgba(150, 255, 150, 0.05) 0px, rgba(150, 255, 150, 0.05) 1px, rgba(0, 0, 0, 0) 2px, rgba(0, 0, 0, 0) 3px),
+        #020a04;
+      border: 1px solid rgba(92, 255, 129, 0.55);
+      border-radius: 8px;
+      padding: 14px;
+      text-shadow: 0 0 6px rgba(88, 255, 126, 0.35);
+      animation: crt-flicker 5s infinite steps(1);
+    }
+
+    .info-col {
+      min-width: 0;
+      border: 1px solid rgba(92, 255, 129, 0.35);
+      border-radius: 8px;
+      background: linear-gradient(rgba(60, 255, 106, 0.03), rgba(60, 255, 106, 0.03)), #020a04;
+      padding: 12px;
+    }
+
+    .info-col h2 {
+      margin: 0 0 8px;
+      font-family: "VT323", "IBM Plex Mono", monospace;
+      font-size: 30px;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+    }
+
+    .lead {
+      margin: 0 0 12px;
+      font-size: 12px;
+      line-height: 1.35;
+      opacity: 0.9;
+    }
+
+    .inst-list { display: grid; gap: 8px; }
+
+    .inst-card {
+      border: 1px solid rgba(92, 255, 129, 0.28);
+      border-radius: 6px;
+      background: rgba(2, 14, 8, 0.75);
+      padding: 8px 10px;
+    }
+
+    .inst-card h3 {
+      margin: 0 0 4px;
+      font-size: 13px;
+      line-height: 1.2;
+      font-family: "Silkscreen", "IBM Plex Mono", monospace;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .inst-card p {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.35;
+      opacity: 0.92;
+    }
+
+    .drums { color: var(--drums); font-weight: 700; text-shadow: 0 0 7px rgba(255, 53, 94, 0.55); }
+    .keys { color: var(--keys); font-weight: 700; text-shadow: 0 0 7px rgba(255, 79, 216, 0.55); }
+    .guitar { color: var(--guitar); font-weight: 700; text-shadow: 0 0 7px rgba(73, 166, 255, 0.55); }
+    .vocal { color: var(--vocal); font-weight: 700; text-shadow: 0 0 7px rgba(255, 225, 79, 0.55); }
+    .mixers { color: var(--mixers); font-weight: 700; background: rgba(255, 212, 71, 0.12); text-shadow: 0 0 7px rgba(255, 212, 71, 0.45); }
+
+    .inst-card.drums h3 { color: var(--drums); }
+    .inst-card.guitar h3 { color: var(--guitar); }
+    .inst-card.keys h3 { color: var(--keys); }
+    .inst-card.vocal h3 { color: var(--vocal); }
+
+    @keyframes crt-flicker {
+      0%, 100% { opacity: 1; }
+      2% { opacity: 0.98; }
+      3% { opacity: 0.95; }
+      4% { opacity: 1; }
+      51% { opacity: 0.99; }
+      52% { opacity: 0.96; }
+      53% { opacity: 1; }
+    }
+
+    @media (max-width: 980px) {
+      .layout { grid-template-columns: 1fr; }
+      pre { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="topbar">
+      <h1><span class="drums" data-i18n="titleBand">KOSTOHRYZ</span> <span class="guitar" data-i18n="titlePlan">STAGEPLAN</span></h1>
+      <div class="lang-switch" role="group" aria-label="Language switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="cz">CZ</button>
+      </div>
+    </div>
+
+    <section class="layout">
+      <div class="stage-col">
+        <pre>
++----------------------------------------------------------------------------------------+
+|                                         UPSTAGE                                        |
++----------------------------------------------------------------------------------------+
+|                                                                                        |
+| [<span class="guitar">AMP 1 + CAB 1</span>]                                                        [<span class="guitar">AMP 2 + CAB 2</span>] |
+|       ^                                                                    ^           |
+|       |                                                                    |           |
+|       +------------------------------------------------------------------+ |           |
+|                                                                          | |           |
+|                                                                          | |           |
+|                                                                          | |           |
+|                                                                          | |           |
+|                                                                          | |           |
+|                                    [<span class="drums">DRUM TRIGGERS</span>] -----------+          | |           |
+|                                         [<span class="drums">DRUMS</span>]               |          | |           |
+|                                                               |          | |           |
+|                                                    [<span class="mixers">MIXER 2</span>]&lt;-+          | |           |
+|                                                          ^               | |           |
+|                                                          |               | |           |
+|                                                          |               | |           |
+|                                                          |               | |           |
+|                                                          |               | |           |
+| [<span class="keys">KEYS</span>]----------&gt;[<span class="mixers">MIXER 1</span>]-------------------------------+               | |  [<span class="guitar">GUITAR</span>] |
+|                    ^                                                     | |           |
+|                    |                                               [<span class="guitar">GUITAR PEDALBOARD</span>] |
+| [<span class="keys">NOISE RIG</span>]--------+                                                                   |
+| [<span class="keys">SAXOPHONE</span>]                                                                            |
+|                                                                                        |
+|                                                                                        |
+|                                                                                        |
+|                                      [<span class="vocal">VOCAL MIC</span>]                                       |
+|                                                                                        |
+|        [<span class="vocal">MONITOR</span>]                      [<span class="vocal">MONITOR</span>]                       [<span class="vocal">MONITOR</span>]        |
++----------------------------------------------------------------------------------------+
+|                                       DOWNSTAGE                                        |
++----------------------------------------------------------------------------------------+
+        </pre>
+      </div>
+
+      <aside class="info-col">
+        <h2 data-i18n="notesTitle">INSTRUMENT NOTES</h2>
+        <p class="lead" data-i18n="lead">Short overview for each section. Replace with final production notes later.</p>
+        <div class="inst-list">
+          <article class="inst-card drums">
+            <h3 data-i18n="drumsTitle">DRUMS</h3>
+            <p data-i18n="drumsText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida sem vitae fermentum gravida, non volutpat justo luctus.</p>
+          </article>
+          <article class="inst-card guitar">
+            <h3 data-i18n="guitarTitle">GUITAR</h3>
+            <p data-i18n="guitarText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc luctus, augue non aliquet blandit, libero nisl mattis elit.</p>
+          </article>
+          <article class="inst-card keys">
+            <h3 data-i18n="synthTitle">SYNTH + NOISE + SAX</h3>
+            <p data-i18n="synthText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vulputate justo at mauris faucibus, vitae feugiat metus suscipit.</p>
+          </article>
+          <article class="inst-card vocal">
+            <h3 data-i18n="vocalTitle">VOCALS</h3>
+            <p data-i18n="vocalText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut massa non magna varius aliquet et at est.</p>
+          </article>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    const translations = {
+      en: {
+        titleBand: "KOSTOHRYZ",
+        titlePlan: "STAGEPLAN",
+        notesTitle: "INSTRUMENT NOTES",
+        lead: "Short overview for each section. Replace with final production notes later.",
+        drumsTitle: "DRUMS",
+        drumsText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida sem vitae fermentum gravida, non volutpat justo luctus.",
+        guitarTitle: "GUITAR",
+        guitarText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc luctus, augue non aliquet blandit, libero nisl mattis elit.",
+        synthTitle: "SYNTH + NOISE + SAX",
+        synthText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vulputate justo at mauris faucibus, vitae feugiat metus suscipit.",
+        vocalTitle: "VOCALS",
+        vocalText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut massa non magna varius aliquet et at est."
+      },
+      cz: {
+        titleBand: "KOSTOHRYZ",
+        titlePlan: "STAGEPLAN",
+        notesTitle: "POZNÁMKY K NÁSTROJŮM",
+        lead: "Krátký přehled pro každou sekci. Později nahradíme finálními produkčními poznámkami.",
+        drumsTitle: "BICÍ",
+        drumsText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida sem vitae fermentum gravida, non volutpat justo luctus.",
+        guitarTitle: "KYTARA",
+        guitarText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc luctus, augue non aliquet blandit, libero nisl mattis elit.",
+        synthTitle: "SYNTH + NOISE + SAX",
+        synthText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vulputate justo at mauris faucibus, vitae feugiat metus suscipit.",
+        vocalTitle: "VOKÁLY",
+        vocalText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut massa non magna varius aliquet et at est."
+      }
+    };
+
+    function setLanguage(lang) {
+      const dict = translations[lang] || translations.en;
+      document.documentElement.lang = lang === "cz" ? "cs" : "en";
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key]) el.textContent = dict[key];
+      });
+      document.querySelectorAll(".lang-btn").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+      });
+    }
+
+    document.querySelectorAll(".lang-btn").forEach((btn) => {
+      btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
+    });
+
+    setLanguage("en");
+  </script>
+</body>
+</html>

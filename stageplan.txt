@@ -40,42 +40,22 @@
 |                                       DOWNSTAGE                                        |
 +----------------------------------------------------------------------------------------+
 
-DRUMS DETAILS
-+-------------------+---------------------------+
-| ITEM              | SPEC                      |
-+-------------------+---------------------------+
-| KICK DRUMS        | 2x22"                     |
-| FLOOR TOM         | 16"                       |
-| TOM               | 14"                       |
-| SNARE DRUMS       | 2x14"                     |
-| KICK TRIGGERS     | x2                        |
-| SNARE TRIGGER(S)  | YES                       |
-+-------------------+---------------------------+
+GENERAL DESCRIPTION
+- KOSTOHRYZ plays experimental grindcore: very loud, fast, and physically aggressive.
+- The set blends tight rhythmic violence with unstable textures, feedback, and harsh noise.
+- Dynamic range is intentional: abrupt jumps between dense walls of sound and exposed moments.
 
-KEYS / NOISE DETAILS
-+-------------------+---------------------------+
-| ITEM              | SPEC                      |
-+-------------------+---------------------------+
-| KEYS              | YES                       |
-| NOISE RIG         | YES                       |
-| MIXER 1           | YES                       |
-| SAXOPHONE         | YES                       |
-+-------------------+---------------------------+
-
-GUITAR DETAILS
-+-------------------+---------------------------+
-| ITEM              | SPEC                      |
-+-------------------+---------------------------+
-| GUITAR            | YES                       |
-| PEDALBOARD        | YES                       |
-| AMP 1 + CAB 1     | YES                       |
-| AMP 2 + CAB 2     | YES                       |
-+-------------------+---------------------------+
-
-VOCAL DETAILS
-+-------------------+---------------------------+
-| ITEM              | SPEC                      |
-+-------------------+---------------------------+
-| VOCAL MIC         | YES                       |
-| VOCAL STAND       | YES                       |
-+-------------------+---------------------------+
+INSTRUMENT GROUP NOTES
+- DRUMS: Acoustic core of the set, tuned for impact and articulation under extreme volume.
+- DRUM TRIGGERS: Add precision attack and electronic reinforcement for kicks and snare accents.
+- GUITAR: Main harmonic/noise engine, shifting between grind riffs, drones, and abrasive textures.
+- GUITAR PEDALBOARD: Primary tone-shaping hub; distortion, gating, and modulation create layered chaos.
+- AMP 1 + CAB 1: Mid-forward articulation and cut for riff clarity.
+- AMP 2 + CAB 2: Extended low-end mass and sustain to widen the guitar wall.
+- KEYS: Harmonic beds, dissonant clusters, and synthetic tension between heavy sections.
+- NOISE RIG: Generates glitches, bursts, static, and non-musical gestures as a structural element.
+- SAXOPHONE: Raw acoustic voice for shrieks, overblown textures, and free-form counterlines.
+- MIXER 1: Submix point for keys/noise sources before transfer to the central mix path.
+- MIXER 2: Central merge point for drums, triggers, and electronic layers on stage.
+- VOCAL MIC: Frontline focal point for extreme vocal delivery and command cues.
+- MONITORS: Three monitor positions support timing lock and high-noise performance awareness.
