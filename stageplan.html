@@ -136,6 +136,14 @@
       opacity: 0.9;
     }
 
+    .lead-list {
+      padding-left: 18px;
+    }
+
+    .lead-list li + li {
+      margin-top: 2px;
+    }
+
     .inst-list { display: grid; gap: 8px; }
 
     .inst-card {
@@ -159,6 +167,18 @@
       font-size: 12px;
       line-height: 1.35;
       opacity: 0.92;
+    }
+
+    .inst-card ul {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 12px;
+      line-height: 1.35;
+      opacity: 0.92;
+    }
+
+    .inst-card li + li {
+      margin-top: 2px;
     }
 
     .drums { color: var(--drums); font-weight: 700; text-shadow: 0 0 7px rgba(255, 53, 94, 0.55); }
@@ -242,23 +262,43 @@
 
       <aside class="info-col">
         <h2 data-i18n="notesTitle">INSTRUMENT NOTES</h2>
-        <p class="lead" data-i18n="lead">Short overview for each section. Replace with final production notes later.</p>
+        <ul class="lead lead-list" data-i18n-list="lead">
+          <li>Experimental grindcore.</li>
+          <li>We like to play loud.</li>
+          <li>Noise and glitch friendly.</li>
+          <li>Set length: 15 min.</li>
+        </ul>
         <div class="inst-list">
           <article class="inst-card drums">
             <h3 data-i18n="drumsTitle">DRUMS</h3>
-            <p data-i18n="drumsText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida sem vitae fermentum gravida, non volutpat justo luctus.</p>
+            <ul data-i18n-list="drumsText">
+              <li>2x22 Kick drum.</li>
+              <li>16 floor tom.</li>
+              <li>14 rack tom.</li>
+              <li>2x14 snare.</li>
+              <li>Snare and kicks are wired to triggers, passed to <code>Mixer 2</code> should be mixed into final sound.</li>
+            </ul>
           </article>
           <article class="inst-card guitar">
             <h3 data-i18n="guitarTitle">GUITAR</h3>
-            <p data-i18n="guitarText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc luctus, augue non aliquet blandit, libero nisl mattis elit.</p>
+            <ul data-i18n-list="guitarText">
+              <li>From pedalboard effect switcher goes to two amps.</li>
+              <li>Both amps are considered main, but one is more noise oriented.</li>
+            </ul>
           </article>
           <article class="inst-card keys">
             <h3 data-i18n="synthTitle">SYNTH + NOISE + SAX</h3>
-            <p data-i18n="synthText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vulputate justo at mauris faucibus, vitae feugiat metus suscipit.</p>
+            <ul data-i18n-list="synthText">
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+              <li>Maecenas vulputate justo at mauris faucibus, vitae feugiat metus suscipit.</li>
+            </ul>
           </article>
           <article class="inst-card vocal">
             <h3 data-i18n="vocalTitle">VOCALS</h3>
-            <p data-i18n="vocalText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut massa non magna varius aliquet et at est.</p>
+            <ul data-i18n-list="vocalText">
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+              <li>Vivamus ut massa non magna varius aliquet et at est.</li>
+            </ul>
           </article>
         </div>
       </aside>
@@ -271,29 +311,29 @@
         titleBand: "KOSTOHRYZ",
         titlePlan: "STAGEPLAN",
         notesTitle: "INSTRUMENT NOTES",
-        lead: "Short overview for each section. Replace with final production notes later.",
+        lead: "Experimental grindcore.|We like to play loud.|Noise and glitch friendly.|Set length: 15 min.",
         drumsTitle: "DRUMS",
-        drumsText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida sem vitae fermentum gravida, non volutpat justo luctus.",
+        drumsText: "2x22 Kick drum.|16 floor tom.|14 rack tom.|2x14 snare.|Snare and kicks are wired to triggers, passed to `Mixer 2` should be mixed into final sound.",
         guitarTitle: "GUITAR",
-        guitarText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc luctus, augue non aliquet blandit, libero nisl mattis elit.",
+        guitarText: "From pedalboard effect switcher goes to two amps.|Both amps are considered main, but one is more noise oriented.",
         synthTitle: "SYNTH + NOISE + SAX",
-        synthText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vulputate justo at mauris faucibus, vitae feugiat metus suscipit.",
+        synthText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.|Maecenas vulputate justo at mauris faucibus, vitae feugiat metus suscipit.",
         vocalTitle: "VOCALS",
-        vocalText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut massa non magna varius aliquet et at est."
+        vocalText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.|Vivamus ut massa non magna varius aliquet et at est."
       },
       cz: {
         titleBand: "KOSTOHRYZ",
         titlePlan: "STAGEPLAN",
         notesTitle: "POZNÁMKY K NÁSTROJŮM",
-        lead: "Krátký přehled pro každou sekci. Později nahradíme finálními produkčními poznámkami.",
+        lead: "Experimentální grindcore.|Rádi hrajeme nahlas.|Přátelský k noise a glitch zvukům.|Délka setu: 15 min.",
         drumsTitle: "BICÍ",
-        drumsText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida sem vitae fermentum gravida, non volutpat justo luctus.",
+        drumsText: "2x22 kopák.|16\" floor tom.|14\" rack tom.|2x14\" snare.|Snare a kopáky jsou snímané triggrery, vedené do `Mixer 2` a mají být přimíchané do finálního zvuku.",
         guitarTitle: "KYTARA",
-        guitarText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc luctus, augue non aliquet blandit, libero nisl mattis elit.",
+        guitarText: "Ze switcheru efektů na pedalboardu vede signál do dvou aparátů.|Oba aparáty jsou považované za hlavní, ale jeden je více orientovaný na noise.",
         synthTitle: "SYNTH + NOISE + SAX",
-        synthText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vulputate justo at mauris faucibus, vitae feugiat metus suscipit.",
+        synthText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.|Maecenas vulputate justo at mauris faucibus, vitae feugiat metus suscipit.",
         vocalTitle: "VOKÁLY",
-        vocalText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut massa non magna varius aliquet et at est."
+        vocalText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.|Vivamus ut massa non magna varius aliquet et at est."
       }
     };
 
@@ -303,6 +343,13 @@
       document.querySelectorAll("[data-i18n]").forEach((el) => {
         const key = el.getAttribute("data-i18n");
         if (dict[key]) el.textContent = dict[key];
+      });
+      document.querySelectorAll("[data-i18n-list]").forEach((el) => {
+        const key = el.getAttribute("data-i18n-list");
+        const value = dict[key];
+        if (!value) return;
+        const items = value.split("|").map((item) => item.trim()).filter(Boolean);
+        el.innerHTML = items.map((item) => `<li>${item}</li>`).join("");
       });
       document.querySelectorAll(".lang-btn").forEach((btn) => {
         btn.classList.toggle("active", btn.dataset.lang === lang);
