@@ -59,6 +59,25 @@
     h1 .drums { color: var(--drums); text-shadow: 0 0 7px rgba(255, 53, 94, 0.55); }
     h1 .guitar { color: var(--guitar); text-shadow: 0 0 7px rgba(73, 166, 255, 0.55); }
 
+    .title-block {
+      display: grid;
+      gap: 2px;
+    }
+
+    .version {
+      font-family: "Silkscreen", "IBM Plex Mono", monospace;
+      font-size: 12px;
+      margin-left: 10px;
+      opacity: 0.85;
+      vertical-align: middle;
+    }
+
+    .updated {
+      margin: 0;
+      font-size: 11px;
+      opacity: 0.8;
+    }
+
     .controls {
       display: flex;
       align-items: center;
@@ -226,7 +245,10 @@
 <body>
   <main class="wrap">
     <div class="topbar">
-      <h1><span class="drums" data-i18n="titleBand">KOSTOHRYZ</span> <span class="guitar" data-i18n="titlePlan">STAGEPLAN</span></h1>
+      <div class="title-block">
+        <h1><span class="drums" data-i18n="titleBand">KOSTOHRYZ</span> <span class="guitar" data-i18n="titlePlan">STAGEPLAN</span><span class="version">v1.0</span></h1>
+        <p class="updated"><span data-i18n="updatedLabel">Last updated at</span>: <span id="last-updated"></span></p>
+      </div>
       <div class="controls">
         <nav class="page-links" aria-label="Page switcher">
           <a class="active" href="stageplan.html" data-page="stageplan.html" data-i18n="linkStageplan">STAGEPLAN</a>
@@ -325,6 +347,7 @@
       en: {
         titleBand: "KOSTOHRYZ",
         titlePlan: "STAGEPLAN",
+        updatedLabel: "Last updated at",
         linkStageplan: "STAGEPLAN",
         linkRider: "RIDER",
         notesTitle: "INSTRUMENT NOTES",
@@ -340,6 +363,7 @@
       cz: {
         titleBand: "KOSTOHRYZ",
         titlePlan: "STAGEPLAN",
+        updatedLabel: "Naposledy aktualizováno",
         linkStageplan: "STAGEPLAN",
         linkRider: "RIDER",
         notesTitle: "POZNÁMKY K NÁSTROJŮM",
@@ -371,6 +395,22 @@
       document.querySelectorAll(".lang-btn").forEach((btn) => {
         btn.classList.toggle("active", btn.dataset.lang === lang);
       });
+      setLastUpdated();
+    }
+
+    function setLastUpdated() {
+      const target = document.getElementById("last-updated");
+      if (!target) return;
+      const source = document.lastModified ? new Date(document.lastModified) : new Date();
+      const value = Number.isNaN(source.getTime()) ? new Date() : source;
+      const locale = document.documentElement.lang === "cs" ? "cs-CZ" : "en-GB";
+      target.textContent = new Intl.DateTimeFormat(locale, {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit"
+      }).format(value);
     }
 
     document.querySelectorAll(".lang-btn").forEach((btn) => {
